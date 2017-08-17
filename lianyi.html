@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>涟漪按钮</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .button {
+            width: 150px;
+            height: 80px;
+            margin: 10px;
+            border: 1px solid #e2e2e2;
+            line-height: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+        }
+        
+        .ripple {
+            border-radius: 100%;
+            background-color: pink;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: scale(0);
+        }
+        
+        .animate {
+            animation: ripple 0.4s linear;
+        }
+        
+        @keyframes ripple {
+            100% {
+                transform: scale(6);
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button">
+        <p>涟漪</p>
+        <div class="ripple" id="ripple"></div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(".button").mousedown(function(e) {
+            $('#ripple').removeClass('animate');
+            var x = parseInt(e.pageX - $(this).offset().left) - ($('#ripple').width() / 2);
+            var y = parseInt(e.pageY - $(this).offset().top) - ($('#ripple').height() / 2);
+            $('#ripple').css({
+                top: y,
+                left: x
+            }).addClass("animate");
+            // setTimeout(function() {
+            //     $('#ripple').addClass('animate');
+            // }, 300)
+
+        })
+    </script>
+</body>
+
+</html>

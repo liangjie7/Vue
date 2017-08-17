@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext("2d");
+        // context.fillRect(0, 0, 100, 100);
+        // context.strokeRect(120, 0, 100, 100);
+        // context.fillStyle = "pink";
+        // context.strokeStyle = "darkred";
+        // context.fillRect(0, 120, 100, 100);
+        // context.strokeRect(120, 120, 100, 100);
+        // context.clearRect(50, 50, 120, 120);
+        // context.beginPath();
+        // context.arc(300, 350, 100, 0, Math.PI * 2, true);
+        // context.closePath();
+        // // context.fillStyle = 'red';
+        // context.fill();
+        context.fillStyle = 'green';
+        var n = 0;
+        var dx = 150;
+        var dy = 150;
+        var s = 100;
+        context.beginPath();
+        context.fillStyle = 'pink';
+        context.strokeStyle = 'rgb(0,0,100)';
+        var x = Math.sin(0);
+        var y = Math.cos(0);
+        var dig = Math.PI / 15 * 5;
+        for (var i = 0; i < 6; i++) {
+            var x = Math.sin(i * dig);
+            var y = Math.cos(i * dig);
+            context.lineTo(dx + x * s, dy + y * s);
+            console.log(x, y)
+        }
+        context.closePath();
+        context.fill();
+        context.stroke()
+        context.stroke();
+    </script>
+</body>
+
+</html>
